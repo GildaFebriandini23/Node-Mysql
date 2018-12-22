@@ -1,0 +1,10 @@
+{"message":"::1 - - [22/Dec/2018:04:24:01 +0000] \"GET /customers HTTP/1.1\" 200 1656 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [22/Dec/2018:04:28:06 +0000] \"GET /customers HTTP/1.1\" 200 1656 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [22/Dec/2018:04:28:06 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"http://localhost:3000/customers\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [22/Dec/2018:04:28:07 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"http://localhost:3000/customers\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [22/Dec/2018:04:28:42 +0000] \"GET /customer/1 HTTP/1.1\" 200 207 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [22/Dec/2018:04:29:33 +0000] \"POST /customer HTTP/1.1\" 200 52 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [22/Dec/2018:04:30:00 +0000] \"GET /customers HTTP/1.1\" 200 1844 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [22/Dec/2018:04:30:51 +0000] \"PUT /customer HTTP/1.1\" 200 81 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [22/Dec/2018:04:32:29 +0000] \"DELETE /customer/3473 HTTP/1.1\" 200 151 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
+{"message":"::1 - - [22/Dec/2018:04:38:17 +0000] \"POST /customer HTTP/1.1\" 200 52 \"-\" \"PostmanRuntime/7.4.0\"\n","level":"info"}
