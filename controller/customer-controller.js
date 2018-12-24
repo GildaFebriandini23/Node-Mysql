@@ -1,12 +1,11 @@
 var response = require('../model/res');
-var customerDao = require('../dao/customer-dao');
+var customerDaoSequelize = require('../dao/customer-dao-sequelize');
 var logger = require('../util/logging/winston-logger');
 var util = require('util');
 
 exports.customers = function(req, res) {
-    customerDao.getAll(function (error, rows){
+    customerDaoSequelize.getAll(function (error, rows){
         if(error){
-            console.log('error while select : ' + error);
             logger.error('error while select: '+error);
             response.err(ress, err);
         } else {
@@ -16,9 +15,8 @@ exports.customers = function(req, res) {
 };
 
 exports.getCustomerById = function(req, res) {
-    customerDao.getById(req.params['id'], function(err, data){
+    customerDaoSequelize.getById(req.params['id'], function(err, data){
         if(err){
-            console.log('error call getById : '+ err);
             logger.error('error while select: '+error);
             response.err(err, res);
         }
@@ -27,52 +25,52 @@ exports.getCustomerById = function(req, res) {
 };
 
 exports.updateCustomer = function(req, res) {
-    customerDao.getById(req.body.customernumber, function(err, data){ //check customer exists
+    logger.info('request for update :');
+    logger.debug(req.body);
+    customerDaoSequelize.getById(req.body.customernumber, function(err, data){ //check customer exists
         if(err){
-            console.log('error call getById :' +err);
-            logger.error('error while select: '+error);
+            logger.error('error call getById: '+err);
             response.err(err, res);
         } else if(data==null){
             response.datanotfound('customer not found', res);
         }else {
             //if exists, then continue update
-            customerDao.update(req.body.customernumber, req.body, function(err, data){
+            customerDaoSequelize.update(req.body.customernumber, req.body, function(err, data){
                 if(err){
-                    console.log('error call update :' +err);
                     logger.error('error while select: '+error);
                     response.err(error, res);
                 }
-                response.ok('updated data :'+ data.message, res);
+                response.ok('updated data :'+ data.customernumber, res);
             });
         }
     });
 };
 
 exports.insertCustomer = function(req, res) {
-    customerDao.insert(req.body, function(err, data){
+    logger.info('request for insert :');
+    logger.debug(req.body);
+    customerDaoSequelize.insert(req.body, function(err, data){
         if(err){
-            console.log('error call insert :'+err);
-            logger.error('error while select: '+error);
+            logger.error('error call insert: '+err);
             response.err(err, res);
         }
-        response.ok(data, res);
+        response.ok('data inserted with id :'+ data.customernumber, res);
     });
 };
 
 exports.del = function(req, res) {
-    customerDao.getById(req.params['id'], function(err, data){ //check customer exists
+    logger.info(util.format('deleting customer id %s', req.params['id']));
+    customerDaoSequelize.getById(req.params['id'], function(err, data){ //check customer exists
         if(err){
-            console.log('error call getById : '+err);
-            logger.error('error while select: '+error);
+            logger.error('error while select: '+err);
             response.err(err, res);
         } else if(data==null){
             response.datanotfound('customer not found', res);
         } else{
             //if exists, continue delete
-            customerDao.del(req.params['id'], function(err, data){
+            customerDaoSequelize.del(req.params['id'], function(err, data){
                 if(err){
-                    console.log('error call delete : '+err);
-                    logger.error('error while select: '+error);
+                    logger.error('error while select: '+err);
                     response.err(error, res);
                 }
                 response.ok(data, res);

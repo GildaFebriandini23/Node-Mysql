@@ -12,20 +12,15 @@ var logger = require("./util/logging/winston-logger");
 app.use(morgan('combined', { "stream": logger.stream}));
 logger.debug("Overidding 'Express' logger");
 
-
-// var routes = require('./router/routes');
-// routes(app);
-
 var customerRoute = require('./router/routes-customer');
 customerRoute(app);
 
 var AccountRoute = require('./router/routes-account');
 AccountRoute(app);
 
-var TransactionRoute = require('./router/routes-transaction');
-TransactionRoute(app);
+// var TransactionRoute = require('./router/routes-transaction');
+// TransactionRoute(app);
 
 app.listen(port);
-console.log('Learn Node JS With Kiddy, RESTful API server started on: ' + port);
-
+// console.log('Learn Node JS With Kiddy, RESTful API server started on: ' + port);
 logger.debug('Learn Node JS With Kiddy, RESTful API server started on: ' + port);

@@ -30,6 +30,10 @@ var options = {
 };
 
 var logger = winston.createLogger({
+    format: winston.format.combine(
+        winston.format.timestamp({format: "YYYY-MM-DD hh:mm:ss.SSS"}),
+        winston.format.json()
+    ),
     transports: [
         new (winston.transports.Console)(options.console),
         new (winston.transports.File)(options.errorFile),
