@@ -9,7 +9,8 @@ exports.accounts = function(req, res) {
             logger.error('error while select: '+error);
             response.err(error, res);
         } else{
-            response.ok(rows, res)
+            return res.json(rows)
+            // response.ok(rows, res)
         }
     });
 };
@@ -74,7 +75,7 @@ exports.del = function(req, res) {
                     logger.error('error call delete : '+err);
                     response.err(error, res);
                 } 
-                response.ok('customer deleted with id : '+data, res);
+                response.ok('account deleted with id : '+data, res);
             });
         }
     });
