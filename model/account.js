@@ -17,7 +17,8 @@ module.exports = (sequelize, type) => {
             field: 'balance',
             type: type.STRING
         },
-        customer_id: {
+        customerNumber: {
+            field : 'customer_id',
             type: type.INTEGER,
             onDelete: 'CASCADE',
             references: {

@@ -12,8 +12,9 @@ exports.getById = function getById(id, callback) {
     })
 };
 
-exports.getAll = function getAll(callback) {
+exports.getAll = function getAll(whereClause, callback) {
     Account.findAll({
+        where: whereClause,
         include:[Customer]
     })
     .then((accounts) => {
