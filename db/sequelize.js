@@ -18,7 +18,7 @@ const Customer = CustomerModel(sequelize, Sequelize)
 const Account = AccountModel(sequelize, Sequelize)
 const Transaction = TransactionModel(sequelize, Sequelize)
 
-Account.belongsTo(Customer, {foreignKey: 'customer_id', targetKey:'customernumber'});
+Account.belongsTo(Customer, {foreignKey: 'customer_id', targetKey:'customerNumber'});
 Transaction.belongsTo(Account, {foreignKey: 'account_id', targetKey: 'accountNumber'});
 
 

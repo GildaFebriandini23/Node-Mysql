@@ -10,7 +10,7 @@ exports.accounts = function(req, res) {
             response.err(error, res);
         } else{
             return res.json(rows)
-            // response.ok(rows, res)
+            //  response.ok(rows, res)
         }
     });
 };

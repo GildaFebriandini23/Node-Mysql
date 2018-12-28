@@ -9,8 +9,8 @@ exports.customers = function(req, res) {
             logger.error('error while select: '+error);
             response.err(ress, err);
         } else {
-            return res.json(rows)
-            // response.ok(rows, res)
+         return res.json(rows)
+        //  response.ok(rows, res)
         }
     });
 };
@@ -28,7 +28,7 @@ exports.getCustomerById = function(req, res) {
 exports.updateCustomer = function(req, res) {
     logger.info('request for update :');
     logger.debug(req.body);
-    customerDaoSequelize.getById(req.body.customernumber, function(err, data){ //check customer exists
+    customerDaoSequelize.getById(req.body.customerNumber, function(err, data){ //check customer exists
         if(err){
             logger.error('error call getById: '+err);
             response.err(err, res);
@@ -36,12 +36,12 @@ exports.updateCustomer = function(req, res) {
             response.datanotfound('customer not found', res);
         }else {
             //if exists, then continue update
-            customerDaoSequelize.update(req.body.customernumber, req.body, function(err, data){
+            customerDaoSequelize.update(req.body.customerNumber, req.body, function(err, data){
                 if(err){
                     logger.error('error while select: '+error);
                     response.err(error, res);
                 }
-                response.ok('updated data :'+ data.customernumber, res);
+                response.ok('updated data :'+ data.customerNumber, res);
             });
         }
     });
@@ -55,7 +55,7 @@ exports.insertCustomer = function(req, res) {
             logger.error('error call insert: '+err);
             response.err(err, res);
         }
-        response.ok('data inserted with id :'+ data.customernumber, res);
+        response.ok('data inserted with id :'+ data.customerNumber, res);
     });
 };
 
