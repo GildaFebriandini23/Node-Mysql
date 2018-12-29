@@ -21,7 +21,8 @@ module.exports = (sequelize, type) => {
             field: 'amountSign',
             type: type.STRING
         },
-        account_id:{
+        accountNumber:{
+            field : 'account_id',
             type: type.INTEGER,
             onDelete: 'CASCADE',
             references: {

@@ -12,8 +12,9 @@ exports.getById = function getById(id, callback){
     })
 };
 
-exports.getAll = function getAll(callback) {
+exports.getAll = function getAll(whereCaluse, callback) {
     Transaction.findAll({
+        where: whereCaluse,
         include:[Account]
     })
     .then((transactions) => {

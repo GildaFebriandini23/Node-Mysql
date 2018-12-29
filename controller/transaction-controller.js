@@ -4,15 +4,31 @@ var logger = require('../util/logging/winston-logger');
 var util = require('util');
 
 exports.transactions = function(req, res){
-    transactionDao.getAll(function (error, rows){
-        if(error){
-            logger.error('error while select: '+error);
-            response.err(ress, err);
-        } else {
-            // return res.json(rows)
-            response.ok(rows, res);
+        let whereClause = {};
+        if(req.query.type){
+            whereClause.type = req.query.type;
         }
-    });
+        if(req.query.amount){
+            whereClause.amount = req.query.amount;
+        }
+        if(req.query.id){
+            whereClause.id = req.query.id;
+        }
+        if(req.query.amountSign){
+            whereClause.amountSign = req.query.amountSign;
+        }
+        if(req.query.accountNumber){
+            whereClause.accountNumber = req.query.accountNumber;
+        }
+
+        transactionDao.getAll(whereClause, function (error, rows){
+            if(error){
+                logger.error('error while select: '+error);
+                response.err(error, res);
+            } else {
+                response.ok(rows, res);
+            }
+        });
 };
 
 exports.getTransactionById = function(req, res){
